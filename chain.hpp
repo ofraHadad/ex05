@@ -4,6 +4,7 @@
 #include<type_traits>
 #include <iostream>
 #include <sstream>
+
 namespace itertools{
 		template<typename T,typename T2 >	
 	
@@ -17,86 +18,61 @@ namespace itertools{
 		chain(T x,T2 y):start(x),e(y){}
 		
 		
-		template<typename I1, typename I2, typename C>
+		template<typename I1, typename I2>
 		class iterator {
 
 	  private:
 	
 		I1 m_pointer;
 		I2 m2_pointer;
-		I1 m_end;
-		I2 m2_end;
-		int x;
-		C current;
-		 
-		
-		int* pointer= &x;
-		bool flag=true;
+		bool flag= true;
 		
 
 	public:
 
-		iterator(I1 ptr, I2 ptr2, C c, I1 pend, I2 p2end)
-			: m_pointer(ptr), m2_pointer(ptr2),current(c), m_end(pend), m2_end(p2end) {				
+		iterator(I1 ptr, I2 ptr2)
+			: m_pointer(ptr), m2_pointer(ptr2){				
 		}
-			iterator(int* ptr,C c)
-		:pointer(ptr),current(c){
-		}
+		
 				
 		
 
-		 C operator*()  {
-			return current;
+		 decltype(*m_pointer) operator*()  {
+			if(flag)
+				return *m_pointer;
+			return *m2_pointer;
 		}
 
-		I1* operator->()  {
-			return current;
-		}
-
-		// ++i;
-		iterator<I1,I2,C>& operator++() {
+		iterator<I1,I2>& operator++() {
 			
-			if(++m_pointer!=m_end&& current!= *m_pointer){
-				const C temp = *m_pointer;
-				
-				current= temp;
-				
-			}
-			else if(flag){
-				current= *m2_pointer;
-				flag= false;
-			}
-			
-			else if(++m2_pointer!=m2_end && current!=*m2_pointer){
-			
-				
-				current= *m2_pointer;
-				
-			}
-			else{
-			
-				pointer= nullptr;
-			
-			}
+			if(flag)
+				++m_pointer;
+			else
+				++m2_pointer;
 			return *this;
 		}
 
 		
 
-		bool operator==(const iterator& rhs) const {
-			return pointer == rhs.pointer;
-		}
-
-		bool operator!=(const iterator& rhs) const {
-			return pointer != rhs.pointer;
+	
+		bool operator!=(const iterator& rhs)  {
+			if(flag && *rhs.m_pointer== *m_pointer)
+			{
+				flag = false;
+				
+			}
+			 if(!flag)
+				return *m2_pointer!= *rhs.m2_pointer;
+			else
+				return *m_pointer != *rhs.m_pointer;
 		} 
 	}; 
 	auto begin() const{
-		return iterator<decltype(this->start.begin()),decltype(this->e.begin()),typename std::remove_const<decltype(*(start.begin()))>::type >(start.begin(),e.begin(),*(start.begin()),start.end(),e.end());
+		return iterator<decltype(this->start.begin()),decltype(this->e.begin())>(start.begin(),e.begin());
 	}
 	
 	auto end() const{
-		return iterator<decltype(this->start.begin()),decltype(this->e.end()),typename std::remove_const<decltype(*(start.begin()))>::type >(nullptr,*(start.begin()));
+		return iterator<decltype(this->start.begin()),decltype(this->e.end())>(start.end(), e.end());
 	}	
 		
 	};

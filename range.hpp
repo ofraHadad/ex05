@@ -17,58 +17,46 @@ namespace itertools{
 	  private:
 	
 		
-		T* m_pointer= &current;
-
+		
 	public:
 		T current;
-		T last;
-		iterator(T c, T e)
-			: current(c),last(e) {
-											//cout<< *m_pointer <<"ffff"<<endl;
+	
 
+		iterator(T c)
+			: current(c) {
+				
 			
 		}
-		iterator(T* ptr=nullptr)
-		:m_pointer(ptr){}
-
+		
 		T operator*() const{
 			
-
+		
 			return current;
 		}
 
-		T* operator->() const {
-			return current;
-		}
 
-		// ++i;
 		iterator& operator++() {
-			if(current==last-1)
-			{
-				m_pointer=nullptr;
-			}
-			else{
+			
 
 				current++;
 
-			}
+		
 			return *this;
 		}
 
-		bool operator==(const iterator& rhs) const {
-			return m_pointer == rhs.m_pointer;
-		}
+	
 
 		bool operator!=(const iterator& rhs) const {
-			return m_pointer != rhs.m_pointer;
+			
+			return current!= rhs.current;
 		} 
 	}; 
 	iterator begin() const{
-		return iterator(start,e);
+		return iterator(start);
 	}
 	
 	iterator end() const{
-		return iterator(nullptr);
+		return iterator(e);
 	}	
 	};
 };
