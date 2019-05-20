@@ -21,7 +21,7 @@ namespace itertools{
 		//range::iterator start.iterator();
 		I1 m_pointer;
 		
-		string  p;
+		string  p="";
 
 	public:
 
@@ -46,7 +46,7 @@ namespace itertools{
 		
 
 		bool operator!=(const iterator& rhs) const {
-			return *m_pointer != *rhs.m_pointer;
+			return false/*(*m_pointer != *rhs.m_pointer)/* || (*m_pointer>= *rhs.m_pointer+1 || *m_pointer<= *rhs.m_pointer-1) */;
 		} 
 	}; 
 	auto begin() const{

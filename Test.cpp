@@ -188,7 +188,7 @@ int main() {
 		}
 		
 		j=0;
-		for (string i: powerset(product(string("shir"),range(1.5,2.5)))){
+		for (string i: powerset(product(string("shir"),range(1,2)))){
 			testcase.CHECK_EQUAL(i==chain1[j],true);
 			j++;   
 		}
