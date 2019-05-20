@@ -45,8 +45,11 @@ namespace itertools{
 		iterator<I1,I2>& operator++() {
 			
 		
-				
-			
+			if(!flag)
+			{
+				++m_pointer;
+				flag=true;
+			}
 			++temp;
 			if((*temp== *lastTemp))
 			{
@@ -65,7 +68,7 @@ namespace itertools{
 		bool operator!=(const iterator& rhs) {
 			lastTemp= rhs.m2_pointer;
 			if((*temp== *rhs.m2_pointer))
-				temp = m2_pointer;
+				flag=false;
 			
 			return (*m_pointer != *rhs.m_pointer) /*|| (*m_pointer>= *rhs.m_pointer+1 || *m_pointer<= *rhs.m_pointer-1)*/;
 		} 
