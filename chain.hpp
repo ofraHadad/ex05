@@ -60,7 +60,7 @@ namespace itertools{
 
 	
 		bool operator!=(const iterator& rhs)  {
-			if(flag && rhs.m_pointer== m_pointer)
+			if(flag && *rhs.m_pointer== *m_pointer)
 			{
 				flag = false;
 				
