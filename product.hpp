@@ -25,15 +25,16 @@ namespace itertools{
 		I1 m_pointer;
 		I2 m2_pointer;
 		I2 temp;
+		I2 lastTemp;
 		bool flag= true;
 		string  p;
 		bool first=true;
 	public:
 
 		iterator(I1 ptr, I2 ptr2)
-			: m_pointer(ptr), m2_pointer(ptr2), temp(ptr2) {
+			: m_pointer(ptr), m2_pointer(ptr2), temp(ptr2),lastTemp(ptr2) {
 				//temp= m2_pointer;
-				//p= toString(*m_pointer)+","+toString(*temp);
+				p= toString(*m_pointer)+","+toString(*temp);
 		}
 
 		 string operator*() const {
@@ -43,11 +44,18 @@ namespace itertools{
 		
 		iterator<I1,I2>& operator++() {
 			
-			if(!flag)
-				++m_pointer;
+		
+				
 			
+			++temp;
+			if((*temp== *lastTemp))
+			{
+				++m_pointer;
+				temp = m2_pointer;
+				//p= toString(*m_pointer)+","+toString(*temp);
+			}
 			p=toString(*m_pointer)+","+toString(*temp);
-		    ++temp;
+		    
 			return *this;
 		}
 
@@ -55,13 +63,8 @@ namespace itertools{
 
 		
 		bool operator!=(const iterator& rhs) {
+			lastTemp= rhs.m2_pointer;
 			
-			if((*temp== *rhs.m2_pointer))
-			{
-				flag=false;
-				temp = m2_pointer;
-				//p= toString(*m_pointer)+","+toString(*temp);
-			}
 			return (*m_pointer != *rhs.m_pointer) /*|| (*m_pointer>= *rhs.m_pointer+1 || *m_pointer<= *rhs.m_pointer-1)*/;
 		} 
 		
