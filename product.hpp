@@ -56,7 +56,7 @@ namespace itertools{
 		
 		bool operator!=(const iterator& rhs) {
 			
-			if((*temp== *rhs.m2_pointer)||(*temp< *rhs.m2_pointer+1 && *temp > *rhs.m2_pointer-1))
+			if((temp== rhs.m2_pointer))
 			{
 				flag=false;
 				temp = m2_pointer;

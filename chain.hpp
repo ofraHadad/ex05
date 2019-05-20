@@ -53,10 +53,14 @@ namespace itertools{
 		}
 
 		
+		bool operator==(const iterator& rhs)  {
+			
+			return m_pointer == rhs.m_pointer && m2_pointer == rhs.m2_pointer;
+		} 
 
 	
 		bool operator!=(const iterator& rhs)  {
-			if(flag && *rhs.m_pointer== *m_pointer)
+			if(flag && rhs.m_pointer== m_pointer)
 			{
 				flag = false;
 				

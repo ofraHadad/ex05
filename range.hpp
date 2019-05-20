@@ -44,7 +44,10 @@ namespace itertools{
 			return *this;
 		}
 
-	
+	bool operator==(const iterator& rhs) const {
+			
+			return current< rhs.current+1 && current> rhs.current-1;
+		} 
 
 		bool operator!=(const iterator& rhs) const {
 			

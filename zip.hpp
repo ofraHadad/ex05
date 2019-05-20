@@ -49,6 +49,9 @@ namespace itertools{
 			return *this;
 		}
 
+		bool operator==(const iterator& rhs) const {
+			return *m_pointer == *rhs.m_pointer;
+		} 
 	
 		bool operator!=(const iterator& rhs) const {
 			return *m_pointer != *rhs.m_pointer;
