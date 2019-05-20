@@ -31,8 +31,8 @@ namespace itertools{
 	public:
 
 		iterator(I1 ptr, I2 ptr2)
-			: m_pointer(ptr), m2_pointer(ptr2) {
-				temp= m2_pointer;
+			: m_pointer(ptr), m2_pointer(ptr2), temp(ptr2) {
+				//temp= m2_pointer;
 				p= toString(*m_pointer)+","+toString(*temp);
 		}
 
