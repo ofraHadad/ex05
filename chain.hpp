@@ -37,7 +37,7 @@ namespace itertools{
 				
 		
 
-		 decltype(*m_pointer) operator*()  {
+		 decltype(*m_pointer) operator*() const {
 			if(flag)
 				return *m_pointer;
 			return *m2_pointer;

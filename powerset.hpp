@@ -21,7 +21,7 @@ namespace itertools{
 		//range::iterator start.iterator();
 		I1 m_pointer;
 		
-		string * p;
+		string  p;
 
 	public:
 
@@ -29,34 +29,24 @@ namespace itertools{
 			: m_pointer(ptr) {
 		}
 
-		 string& operator*() const {
-			return *p;
-		}
-
-		string* operator->() const {
+		 string operator*() const {
 			return p;
 		}
 
+		
+
 		// ++i;
 		iterator<I1>& operator++() {
-		//	m_pointer++;
+			++m_pointer;
 			return *this;
 		}
 
-		// i++;
-		// Usually iterators are passed by value and not by const& as they are small.
-		const iterator operator++(int) {
-			iterator tmp= *this;
-		//	m_pointer= m_pointer->m_next;
-			return tmp;
-		}
+		
 
-		bool operator==(const iterator& rhs) const {
-			return m_pointer == rhs.m_pointer;
-		}
+		
 
 		bool operator!=(const iterator& rhs) const {
-			return m_pointer != rhs.m_pointer;
+			return *m_pointer != *rhs.m_pointer;
 		} 
 	}; 
 	auto begin() const{
@@ -64,7 +54,7 @@ namespace itertools{
 	}
 	
 	auto end() const{
-		return iterator<decltype(this->start.begin())>(start.begin());
+		return iterator<decltype(this->start.begin())>(start.end());
 	}	
 		
 	};
