@@ -55,7 +55,7 @@ namespace itertools{
 		
 		bool operator==(const iterator& rhs)  {
 			
-			return m_pointer == rhs.m_pointer && m2_pointer == rhs.m2_pointer;
+			return *m_pointer == *rhs.m_pointer && *m2_pointer == *rhs.m2_pointer;
 		} 
 
 	
@@ -66,9 +66,9 @@ namespace itertools{
 				
 			}
 			 if(!flag)
-				return m2_pointer!= rhs.m2_pointer;
+				return *m2_pointer!= *rhs.m2_pointer;
 			else
-				return m_pointer != rhs.m_pointer;
+				return *m_pointer != *rhs.m_pointer;
 		} 
 	}; 
 	auto begin() const{
