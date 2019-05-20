@@ -38,6 +38,7 @@ namespace itertools{
 		}
 
 		 string operator*() const {
+			 
 			return p;
 		}
 
@@ -50,6 +51,8 @@ namespace itertools{
 				++m_pointer;
 				flag=true;
 			}
+			else
+			{
 			++temp;
 			if((*temp== *lastTemp))
 			{
@@ -58,7 +61,7 @@ namespace itertools{
 				//p= toString(*m_pointer)+","+toString(*temp);
 			}
 			p=toString(*m_pointer)+","+toString(*temp);
-		    
+		    }
 			return *this;
 		}
 
