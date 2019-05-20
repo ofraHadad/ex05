@@ -29,7 +29,7 @@ string iterable_to_string(const Iterable& iterable) {
 
 int main() {
 	cout << endl << endl << "Range of ints: " << endl;
-	for (int i: range(5,9))
+	for (double i: range(1.5,2.5))
 		cout << i;    // 5678
 	
 	cout << endl;
@@ -63,7 +63,7 @@ int main() {
 		cout << pair << "  ";    // 1,x,a,6  2,y,b,7  3,z,c,8
 
 	cout << endl << endl << "Cartesian product of a range of ints and a string (can be of different sizes)" << endl;
-	for (auto pair: product(range(1,4), string("hello")))
+	for (auto pair: product(string("shir"),range(1.5,2.5)))
 		cout << pair << "  ";    // 1,h  1,e  1,l  1,l  1,o  2,h  2,e  2,l  2,l  2,o  3,h  3,e  3,l  3,l  3,o
 
 	cout << endl << endl << "Power-set of range of ints " << endl;
