@@ -56,13 +56,13 @@ namespace itertools{
 		
 		bool operator!=(const iterator& rhs) {
 			
-			if((temp== rhs.m2_pointer))
+			if((*temp== *rhs.m2_pointer))
 			{
 				flag=false;
 				temp = m2_pointer;
 				//p= toString(*m_pointer)+","+toString(*temp);
 			}
-			return (m_pointer != rhs.m_pointer) /*|| (*m_pointer>= *rhs.m_pointer+1 || *m_pointer<= *rhs.m_pointer-1)*/;
+			return (*m_pointer != *rhs.m_pointer) /*|| (*m_pointer>= *rhs.m_pointer+1 || *m_pointer<= *rhs.m_pointer-1)*/;
 		} 
 		
 	
